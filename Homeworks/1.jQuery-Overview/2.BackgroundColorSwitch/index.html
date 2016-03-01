@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BackgroundColorSwitch</title>
+    <script src="../libs/jquery.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        $(document).ready(function () {
+            $('#button').click(function () {
+                var elementClass = $('#bird-class').val();
+                var color = $('#color').val();
+                elementClass = '.' + elementClass;
+                $(elementClass).css('background-color', color);
+            });
+        })
+    </script>
+</head>
+<body>
+<div id="wrapper">
+    <fieldset>
+        <span>Class:</span>
+        <input type="text" id="bird-class"></br>
+        <span>Color:</span>
+        <input type="color" id="color"></br>
+        <input type="submit" id="button" value="Paint">
+    </fieldset>
+
+    <ul>
+        <li class="bird">Hummingbird</li>
+        <li class="bird">Nightingale</li>
+        <li>Lizard</li>
+        <li class="bird">Eagle</li>
+        <li class="bird">Sparrow</li>
+    </ul>
+</div>
+
+</body>
+</html>

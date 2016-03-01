@@ -1,0 +1,17 @@
+table {
+    border-spacing: 0;
+    margin: 0 auto;
+}
+
+th {
+    background-color: #76923C;
+}
+
+th, td {
+    width: 200px;
+    border: 1px solid black;
+}
+
+th:first-letter {
+    text-transform: capitalize;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Element Insertion</title>
+    <script src="../libs/jquery.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+<script>
+    //adding element before ul
+    var beforeElement = $('<div id="before"/>');
+    var element = $('ul');
+    element.before(beforeElement);
+    // adding element after ul
+    var afterElement = $('<div id="after" />');
+    element.after(afterElement);
+    //adding element after all list items
+    var afterLi = $('<li>5</li>');
+    element.append(afterLi);
+    // adding element before all list items
+    var beforeLi = $('<li>0</li>');
+    element.prepend(beforeLi);
+</script>
+</body>
+</html>
