@@ -1,0 +1,15 @@
+#wrapper {
+    margin: 0 auto;
+    width: 840px;
+    background-color: grey;
+    border-radius: 30px;
+    border: 2px solid black;
+}
+
+h2 {
+    text-align: center;
+}
+
+#add-country-form, #delete-country-form {
+    padding: 30px;
+}
