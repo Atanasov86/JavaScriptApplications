@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <script src="libs/jquery.js"></script>
+    <link rel="stylesheet" href="libs/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="libs/q.js"></script>
+</head>
+<body>
+<script src="models/book.js"></script>
+<script src="requester/requester.js"></script>
+<script src="requester/userRequester.js"></script>
+<script src="requester/bookRequester.js"></script>
+
+
+<div id="wrapper">
+    <header>
+        <h1>Books</h1>
+    </header>
+    <main>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name of Book</th>
+                    <th>Author</th>
+                    <th>ISBN number</th>
+                    <th>Edit/Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+        <div id="add-form">
+            <label for="book-name">Book name: </label>
+            <input type="text" id="book-name">
+
+            <label for="author">Author: </label>
+            <input type="text" id="author">
+
+            <label for="isbn">ISBN: </label>
+            <input type="text" id="isbn">
+
+            <button id="add-book" class="btn btn-primary">Add book</button>
+        </div>
+
+        <div id="edit-form">
+            <label for="book-name">Book name: </label>
+            <input type="text" id="edit-name">
+
+            <label for="author">Author: </label>
+            <input type="text" id="edit-author">
+
+            <label for="isbn">ISBN: </label>
+            <input type="text" id="edit-isbn">
+
+            <button id="save-book" class="btn btn-primary">Save book</button>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</div>
+</body>
+</html>
