@@ -14,8 +14,8 @@ app.userController = (function () {
         this.viewBag.showRegisterPage(selector);
     };
     
-    UserController.prototype.loadWelcomeUserPage = function (selector, menuSelector) {
-        this.viewBag.showWelcomeUserPage(selector, menuSelector);
+    UserController.prototype.loadWelcomeUserPage = function (selector) {
+        this.viewBag.showWelcomeUserPage(selector);
     };
 
     UserController.prototype.login = function (data) {
@@ -30,14 +30,14 @@ app.userController = (function () {
                     Noty.success("Login successful.")
                 });
             }, function () {
-                Noty.error("Not existing user or wrong password.");
+                var errMsg = JSON.parse(error.responseText);
+                Noty.error(errMsg.error);
             });
     };
 
     UserController.prototype.register = function(data) {
         return this.model.register(data)
             .then(function(success) {
-                console.log(success);
                 sessionStorage['sessionId'] = success._kmd.authtoken;
                 sessionStorage['username'] = success.username;
                 sessionStorage['userId'] = success._id;
@@ -46,8 +46,12 @@ app.userController = (function () {
                     this.trigger('redirectUrl', {url: '#/home/'});
                     Noty.success("Successfully register.")
                 });
-            }, function () {
-                Noty.error("Username is already exist.");
+            }, function (error) {
+                Sammy(function () {
+                    this.trigger('redirectUrl', {url:'#/register/'})
+                });
+                var errMsg = JSON.parse(error.responseText);
+                Noty.error(errMsg.error);
             });
     };
 

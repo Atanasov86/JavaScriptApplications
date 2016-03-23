@@ -18,6 +18,10 @@ app.lectureController = (function () {
     LectureController.prototype.loadAddLecturePage = function (selector) {
         this.viewBag.showAddLecturePage(selector);
     };
+    
+    LectureController.prototype.loadHomeMenu = function (selector) {
+        this.viewBag.showHomeMenu(selector);
+    };
 
     LectureController.prototype.loadAllLecture = function (selector) {
         var _this = this;
@@ -36,7 +40,8 @@ app.lectureController = (function () {
                 });
                 _this.viewBag.showAllLectures(selector, result);
             }, function (error) {
-                Noty.error(error);
+                var errorMsg = JSON.parse(error.responseText);
+                Noty.error(errorMsg.error);
             })
     };
 
@@ -58,7 +63,8 @@ app.lectureController = (function () {
                 });
                 _this.viewBag.showMyLectures(selector, result);
             }, function (error) {
-                Noty.error(error);
+                var errorMsg = JSON.parse(error.responseText);
+                Noty.error(errorMsg.error);
             });
 
 
@@ -72,7 +78,8 @@ app.lectureController = (function () {
                     this.trigger('redirectUrl', {url: '#/calendar/my/'});
                 });
             }, function (error) {
-                Noty.error(error.responseText);
+                var errorMsg = JSON.parse(error.responseText);
+                Noty.error(errorMsg.error);
             });
     };
 
@@ -84,7 +91,8 @@ app.lectureController = (function () {
                     this.trigger('redirectUrl', {url: '#/calendar/my/'});
                 });
             }, function (error) {
-                Noty.error(error.responseText);
+                var errorMsg = JSON.parse(error.responseText);
+                Noty.error(errorMsg.error);
             });
     };
     
@@ -98,13 +106,14 @@ app.lectureController = (function () {
         };
 
         this.model.addLecture(result)
-            .then(function (success) {
+            .then(function () {
                 Sammy(function () {
                     this.trigger('redirectUrl', {url: '#/calendar/my/'});
                     Noty.success("Lecture successful added.")
                 });
             }, function (error) {
-                Noty.error(error.responseText)
+                var errorMsg = JSON.parse(error.responseText);
+                Noty.error(errorMsg.error);
             });
     };
 

@@ -21,7 +21,7 @@ app.userViewBag = (function () {
         })
     }
     
-    function showWelcomeUserPage(selector, menuSelector, data) {
+    function showWelcomeUserPage(selector, data) {
         $.get('templates/welcome-user.html', function (template){
             data = {
                 username: sessionStorage['username']
@@ -29,11 +29,7 @@ app.userViewBag = (function () {
             
             var rendered = Mustache.render(template, data);
             $(selector).html(rendered);
-        });
-
-        $.get('templates/menu-home.html', function (template) {
-            $(menuSelector).html(template);
-        });
+        });        
     }
     
     function showRegisterPage(selector) {

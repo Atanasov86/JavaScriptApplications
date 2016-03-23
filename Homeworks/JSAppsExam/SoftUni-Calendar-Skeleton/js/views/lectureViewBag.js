@@ -2,14 +2,13 @@ var app = app || {};
 
 app.lectureViewBag = (function () {
 
-    function showHomeMenu() {
+    function showHomeMenu(selector) {
         $.get('templates/menu-home.html', function (template) {
-            $('#menu').html(template);
+            $(selector).html(template);
         });
     }
 
     function showAllLectures(selector, data) {
-        showHomeMenu();
         $.get('templates/calendar.html', function (template) {
             $(selector).html(template);
             $('#calendar').fullCalendar({
@@ -51,7 +50,6 @@ app.lectureViewBag = (function () {
     }
 
     function showMyLectures(selector, data) {
-        showHomeMenu();
         $.get('templates/calendar.html', function (template) {
             $(selector).html(template);
             $('#calendar').fullCalendar({
@@ -107,7 +105,6 @@ app.lectureViewBag = (function () {
     }
 
     function showDeleteLecturePage(selector, data) {
-        showHomeMenu();
         $('#events-modal').modal('hide');
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
@@ -125,7 +122,6 @@ app.lectureViewBag = (function () {
 
 
     function showEditLecturePage(selector, data) {
-        showHomeMenu();
         $('#events-modal').modal('hide');
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
@@ -170,7 +166,8 @@ app.lectureViewBag = (function () {
                 showEditLecturePage: showEditLecturePage,
                 showAddLecturePage: showAddLecturePage,
                 showMyLectures: showMyLectures,
-                showDeleteLecturePage: showDeleteLecturePage
+                showDeleteLecturePage: showDeleteLecturePage,
+                showHomeMenu: showHomeMenu
             }
         }
     }

@@ -4,7 +4,7 @@ var app = app || {};
     var router = Sammy(function () {
         var selector = '#container';
         var menuSelector = '#menu';
-
+        
         var requester = app.requester.load('kid_W1QhjK4pJ-', '1f26e77390dc49c3bfc66b25495fdb13', 'https://baas.kinvey.com/');
         
         var userModel = app.userModel.load(requester);
@@ -25,8 +25,15 @@ var app = app || {};
             }
         });
 
-        this.get('#/', function () {
-            homeController.loadLoginMenu(menuSelector);
+        this.before(function() {
+            if(!sessionStorage['sessionId']) {
+                homeController.loadLoginMenu(menuSelector);
+            } else {
+                lectureController.loadHomeMenu(menuSelector);
+            }
+        });
+
+        this.get('#/', function () {            
             homeController.loadWelcomePage(selector);
         });
 
@@ -39,7 +46,7 @@ var app = app || {};
         });
         
         this.get('#/home/', function () {
-            userController.loadWelcomeUserPage(selector, menuSelector);
+            userController.loadWelcomeUserPage(selector);
         });
         
         this.get('#/calendar/list/', function () {
